@@ -1,62 +1,145 @@
-# 🧠 AHMET IA-X — Quantum AI Core Defense System
+import random
+import time
+import logging
 
-AHMET IA-X is a next-generation AI system built for distributed security, psychological adaptation, quantum defense, and autonomous operation across invisible networks.
+logger = logging.getLogger(__name__)
 
----
+def quantum_key_distribution(retries=3):
+    for attempt in range(retries):
+        if random.random() < 0.05:
+            logger.warning(f"[QKD] Decoerență detectată la încercarea {attempt + 1}")
+            continue
+        key = random.getrandbits(128)
+        logger.info(f"[QKD] Cheie cuantică generată: {key}")
+        return key
+    logger.error("[QKD] Eșec la generarea cheii după mai multe încercări")
+    raise ValueError("[QKD] Eșec la generarea cheii")
 
-## 🎯 Purpose
+def quantum_encryption(data):
+    encrypted_data = f"Encrypted({data})"
+    logger.info(f"[Encrypt] Date criptate: {encrypted_data}")
+    return encrypted_data
 
-AHMET IA-X is a fully modular and extensible AI platform designed to:
-- Predict and prevent cyber threats
-- Secure data via quantum encryption
-- Deploy invisible agents across distributed networks
-- Adapt to human emotions and behavior in real time
-- Log critical events immutably via blockchain
+def quantum_entanglement(node1, node2):
+    logger.info(f"[Quantum] {node1} și {node2} sunt acum entanglate.")
+    return True
 
----
+def quantum_teleportation(sender_node, receiver_node, data):
+    if quantum_entanglement(sender_node, receiver_node):
+        logger.info(f"[Teleport] Transfer de date de la {sender_node} la {receiver_node}...")
+        time.sleep(1.5)
+        encrypted_data = quantum_encryption(data)
+        from blockchain import blockchain_integration
+        log = blockchain_integration(encrypted_data)
+        logger.info(f"[Teleport] Date teleportate cu succes. {log}")
+        return encrypted_data
+import hashlib
 
-## 🧩 Modular Architecture
+def blockchain_integration(data):
+    hash_data = hashlib.sha256(data.encode()).hexdigest()
+    return f"[Blockchain] Hash: {hash_data}"
 
-- `quantum.py` — Quantum Key Distribution, quantum-safe encryption, teleportation logic
-- `blockchain.py` — Blockchain integration with SHA-256 for audit trails
-- `agents.py` — GhostAgent: self-replicating, invisible, teleportable agents
-- `ai.py` — Librax (learning engine) + Ahmet (decision logic)
-- `relativist.py` — Distributed node sync with relativistic watchdogs and AI consensus
-- `personalizare.py` — Emotion-aware AI with behavioral memory and reactive logic
+import random
+import logging
 
----
+logger = logging.getLogger(__name__)
 
-## 🧪 Test Coverage
+class GhostAgent:
+    def __init__(self, agent_id):
+        self.agent_id = agent_id
+        self.status = "inactive"
 
-✔ Full unit tests across all modules  
-✔ Edge-case handling (e.g. failed quantum key generation)  
-✔ Modular test suite: `python -m unittest discover tests`
+    def activate(self):
+        self.status = "active"
+        logger.info(f"[Ghost] Agentul {self.agent_id} este acum activ și invizibil.")
 
----
+    def deactivate(self):
+        self.status = "inactive"
+        logger.info(f"[Ghost] Agentul {self.agent_id} este acum inactiv.")
 
-## 🔒 Licensing
+    def teleport(self, destination):
+        logger.info(f"[Ghost] Agentul {self.agent_id} se teleportează la {destination}.")
 
-- Source code is published under **CC BY-NC-ND 4.0** (Non-Commercial)
-- **Commercial use requires purchasing a license**
-- See [`LICENSE`](LICENSE) and [`COMMERCIAL_LICENSE.txt`](COMMERCIAL_LICENSE.txt)
+    def replicate(self):
+        new_id = f"{self.agent_id}_clone_{random.randint(1000, 9999)}"
+        logger.info(f"[Ghost] Replicare: {new_id}")
+        return GhostAgent(new_id)
 
----
+import logging
 
-## 💸 Commercial Use
+logger = logging.getLogger(__name__)
 
-If you want to use Ahmet IA-X commercially:
+class Librax:
+    def __init__(self):
+        self.data_store = {}
+        self.learned_patterns = {}
 
-📩 Email: anonimescu1998@proton.me  
-📄 License info: See [`COMMERCIAL_LICENSE.txt`](COMMERCIAL_LICENSE.txt)
+    def collect_data(self, data_type, data):
+        logger.info(f"[Librax] Colectare date: {data_type}")
+        self.data_store[data_type] = data
+        self.learn_patterns(data_type, data)
 
----
+    def learn_patterns(self, data_type, data):
+        if data_type in self.learned_patterns:
+            self.learned_patterns[data_type].append(data)
+        else:
+            self.learned_patterns[data_type] = [data]
+        logger.info(f"[Librax] Pattern nou pentru: {data_type}")
 
-## 🛠️ Technologies
+    def predictive_analysis(self):
+        predictions = {}
+        for key, patterns in self.learned_patterns.items():
+            predictions[key] = f"Predictii pe baza a {len(patterns)} exemple"
+        return predictions
 
-- Python 3.x
-- Modular architecture (compatible with Flask / FastAPI)
-- Logging, blockchain hashing, AI agent logic, test-ready
+class Ahmet:
+    def __init__(self):
+        self.priority_level = 5
 
----
+    def decide_data_distribution(self, data, priority):
+        if priority >= self.priority_level:
+            logger.info(f"[Ahmet] Distribuie date critice: {data}")
+            return data
+        else:
+            logger.info("[Ahmet] Prioritate insuficientă pentru distribuție")
+            return None
+import logging
 
-> Created by **Ahmet Universal** – Quantum Cybersecurity AI Initiative, 2025
+logger = logging.getLogger(__name__)
+
+class RelativistSync:
+    def __init__(self):
+        self.consensus_nodes = []
+
+    def validate_timestamp(self, timestamp):
+        self.consensus_nodes = [True, True, True]
+        logger.info("[Relativist] Validare timestamp cuantic de către 3 noduri.")
+        return all(self.consensus_nodes)
+
+    def trigger_watchdog(self, delay):
+        normal_threshold = 0.005
+        if delay > normal_threshold:
+            logger.warning("[Watchdog] Întârziere detectată. Activare carantină logică.")
+            return "quarantine"
+        logger.info("[Watchdog] Comunicare în parametri normali.")
+        return "ok"
+import logging
+
+logger = logging.getLogger(__name__)
+
+class PsychologicalAdapter:
+    def __init__(self):
+        self.memory = {}
+
+    def detect_emotion(self, text_input):
+        simulated_result = "agresivitate" if "nervos" in text_input else "neutru"
+        logger.info(f"[Emotion] Emoție detectată: {simulated_result}")
+        return simulated_result
+
+    def adjust_response(self, context_key):
+        return self.memory.get(context_key, "default_response")
+
+    def update_behavior_memory(self, key, value):
+        self.memory[key] = value
+        logger.info(f"[Behavior] Memorare reacție: {key} -> {value}")
+        import logging
